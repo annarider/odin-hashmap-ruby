@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../odin-linked-lists/lib/linked_list.rb'
+require_relative 'linked_list'
 
 # For implementing Hash maps in
 # Ruby, this class contains the methods
@@ -26,8 +26,12 @@ class HashMap
   end
 
   def set(key, value)
-    hash_value = hash_code(key)
-    buckets[hash_value] = 
+    hash_code = hash(key)
+    index = hash_code % @capacity
+    raise IndexError if index.negative? || index >= @buckets.length
+
+    buckets[index] = LinkedList.new if buckets[index].nil?
+    buckets[index].append(key, value)  
   end
  
 end

@@ -2,9 +2,10 @@
 
 require_relative 'node'
 
-# for implementing LinkedLists in
-# LinkedList contains the methods
-# Ruby.
+# For implementing Hashmaps, the
+# LinkedList class provides methods
+# for creating a LinkedList in each
+# bucket.
 #
 # @example Create a new LinkedList
 # list = LinkedList.new
@@ -14,9 +15,9 @@ class LinkedList
     @head = nil
   end
 
-  def append(value)
+  def append(key, value)
     if @head.nil?
-      @head = Node.new(value)
+      @head = Node.new(key, value)
     else
       current = @head
       current = current.next_node until current.next_node.nil?
@@ -24,12 +25,12 @@ class LinkedList
     end
   end
 
-  def prepend(value)
+  def prepend(key, value)
     if @head.nil?
-      @head = Node.new(value)
+      @head = Node.new(key, value)
     else
       old_head = @head
-      @head = Node.new(value, old_head)
+      @head = Node.new(key, value, old_head)
     end
   end
 

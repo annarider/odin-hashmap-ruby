@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'lib/hash_map'
+
 # main contains the main execution
 # for running my HashMaps project.
 #
@@ -18,3 +20,5 @@ test.set('ice cream', 'white')
 test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
+
+p test
