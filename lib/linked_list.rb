@@ -124,15 +124,14 @@ class LinkedList
     previous.next_node = current.next_node
   end
 
-  def to_s
-    pair = ''
+  def to_array
     current = @head
+    list = Array.new([current.key, current.value])
     until current.next_node.nil?
-      pair += "[#{current.key}, #{current.value}]"
+      list << [current.key, current.value]
       current = current.next_node
     end
-    pair += "[#{current.key}, #{current.value}]"
-    pair
+    list
   end
 
   private

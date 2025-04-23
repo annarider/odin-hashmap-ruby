@@ -21,4 +21,4 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-puts test
+p test.entries
