@@ -30,10 +30,14 @@ class HashMap
   def set(key, value)
     hash_code = hash(key)
     index = hash_code % @capacity
-    raise IndexError if index.negative? || index >= @buckets.length
+    raise IndexError if index.negative? || index >= buckets.length
 
-    @buckets[index] = LinkedList.new if buckets[index].nil?
-    @buckets[index].append(key, value)  
+    buckets[index] = LinkedList.new if buckets[index].nil?
+    buckets[index].append(key, value)
+  end
+
+  def entries
+    
   end
  
 end
