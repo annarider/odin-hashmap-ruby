@@ -11,6 +11,8 @@ require_relative 'node'
 # list = LinkedList.new
 #
 class LinkedList
+  attr_accessor :head
+
   def initialize
     @head = nil
   end

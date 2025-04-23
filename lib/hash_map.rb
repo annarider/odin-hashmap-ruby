@@ -10,10 +10,12 @@ require_relative 'linked_list'
 # map = HashMap.new
 #
 class HashMap
+  attr_accessor :load_factor, :capacity, :buckets
+
   def initialize(load_factor = 0.75, capacity = 16)
     @load_factor = load_factor
     @capacity = capacity
-    @buckets = []
+    @buckets = Array.new(capacity)
   end
 
   def hash(key)
@@ -30,8 +32,8 @@ class HashMap
     index = hash_code % @capacity
     raise IndexError if index.negative? || index >= @buckets.length
 
-    buckets[index] = LinkedList.new if buckets[index].nil?
-    buckets[index].append(key, value)  
+    @buckets[index] = LinkedList.new if buckets[index].nil?
+    @buckets[index].append(key, value)  
   end
  
 end
