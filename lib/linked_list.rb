@@ -23,7 +23,7 @@ class LinkedList
     else
       current = @head
       current = current.next_node until current.next_node.nil?
-      current.next_node = Node.new(value)
+      current.next_node = Node.new(key, value)
     end
   end
 
@@ -125,14 +125,14 @@ class LinkedList
   end
 
   def to_s
-    list = ''
+    pair = ''
     current = @head
     until current.next_node.nil?
-      list += "( #{current.value} ) -> "
+      pair += "[#{current.key}, #{current.value}]"
       current = current.next_node
     end
-    list += "( #{current.value} ) -> nil" if current.next_node.nil?
-    list
+    pair += "[#{current.key}, #{current.value}]"
+    pair
   end
 
   private
