@@ -25,3 +25,7 @@ p test.entries
 
 p test.get('elephant')
 p test.get('lion')
+p test.get('cat')
+
+p test.has?('dog')
+p test.has?('cat')
