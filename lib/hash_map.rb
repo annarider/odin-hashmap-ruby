@@ -37,9 +37,9 @@ class HashMap
   end
 
   def entries
-    entries = []
-    buckets.each { |list| entries << list.to_array unless list.nil? }
-    entries
+    result = []
+    buckets.each { |list| result.concat(list.to_array) unless list.nil? }
+    result
   end
  
 end

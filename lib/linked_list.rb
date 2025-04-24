@@ -126,8 +126,8 @@ class LinkedList
 
   def to_array
     current = @head
-    list = Array.new([current.key, current.value])
-    until current.next_node.nil?
+    list = []
+    until current.nil?
       list << [current.key, current.value]
       current = current.next_node
     end
