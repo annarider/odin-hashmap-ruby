@@ -22,3 +22,6 @@ test.set('kite', 'pink')
 test.set('lion', 'golden')
 
 p test.entries
+
+p test.get('elephant')
+p test.get('lion')

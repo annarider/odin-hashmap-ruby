@@ -91,9 +91,9 @@ class LinkedList
     false
   end
 
-  def find(value)
+  def find(key)
     traverse do |current, index|
-      return index if current.value == value
+      return current if current.key == key
     end
     nil
   end

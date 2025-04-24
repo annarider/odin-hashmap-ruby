@@ -28,12 +28,15 @@ class HashMap
   end
 
   def set(key, value)
-    hash_code = hash(key)
-    index = hash_code % @capacity
-    raise IndexError if index.negative? || index >= buckets.length
-
+    index = find_bucket(key)
     buckets[index] = LinkedList.new if buckets[index].nil?
     buckets[index].append(key, value)
+  end
+
+  def get(key)
+    index = find_bucket(key)
+    node = buckets[index].find(key)
+    node.value
   end
 
   def entries
@@ -42,4 +45,12 @@ class HashMap
     result
   end
  
+  private
+
+  def find_bucket(key)
+    hash_code = hash(key)
+    index = hash_code % @capacity
+    raise IndexError if index.negative? || index >= buckets.length
+    index
+  end
 end
