@@ -115,18 +115,17 @@ class LinkedList
 
   def remove(key)
     current = @head
-    deleted_value =  if current.next_node.nil?
-                      @head = nil
-                      current.value
-                    else
-                      until current.next_node.nil? || current.key == key
-                        previous = current
-                        current = current.next_node
-                      end
-                      previous.next_node = current.next_node
-                      current.value
-                    end
-    deleted_value
+    @head = nil
+    if current.next_node.nil?
+      current.value
+    else
+      until current.next_node.nil? || current.key == key
+        previous = current
+        current = current.next_node
+      end
+      previous.next_node = current.next_node
+      current.value
+    end
   end
 
   def to_array
