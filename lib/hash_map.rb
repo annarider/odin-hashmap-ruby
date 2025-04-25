@@ -34,9 +34,12 @@ class HashMap
   end
 
   def get(key)
-    index = find_bucket(key)
-    node = buckets[index].find(key)
-    node.value
+    bucket = buckets[find_bucket(key)]
+    bucket&.find(key).value unless bucket.nil? 
+  end
+
+  def has?(key)
+    buckets[find_bucket(key)].contains?(key)
   end
 
   def entries

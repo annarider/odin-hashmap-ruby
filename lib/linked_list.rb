@@ -84,11 +84,11 @@ class LinkedList
     previous.next_node = nil
   end
 
-  def contains?(value)
+  def contains?(key)
     traverse do |current, _|
-      return true if current.value == value
+      return true if current.key == key
     end
-    false
+    nil
   end
 
   def find(key)
