@@ -43,6 +43,11 @@ class HashMap
     bucket&.contains?(key) ? true : false
   end
 
+  def remove(key)
+    bucket = buckets[find_bucket(key)]
+    bucket&.remove(key) unless bucket.nil?
+  end
+
   def entries
     result = []
     buckets.each { |list| result.concat(list.to_array) unless list.nil? }

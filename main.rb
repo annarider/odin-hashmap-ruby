@@ -23,10 +23,17 @@ test.set('lion', 'golden')
 
 p test.entries
 
+p 'get'
 p test.get('elephant')
 p test.get('lion')
 p test.get('cat')
 
+p 'has?'
 p test.has?('dog')
 p test.has?('carrot')
 p test.has?('cat')
+
+p 'remove'
+p test.remove('elephant')
+p test.remove('frog')
+p test.remove('cat')
