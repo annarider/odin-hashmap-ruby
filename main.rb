@@ -34,6 +34,16 @@ p test.has?('carrot')
 p test.has?('cat')
 
 p 'remove'
+p 'length'
+p test
+p test.length
 p test.remove('elephant')
+p 'length'
+p test
+p test.length
 p test.remove('frog')
 p test.remove('cat')
+
+p 'length'
+p test
+p test.length

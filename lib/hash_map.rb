@@ -48,6 +48,12 @@ class HashMap
     bucket&.remove(key) unless bucket.nil?
   end
 
+  def length
+    count = 0
+    buckets.each { |list| count += list.size unless list.nil? }
+    count
+  end
+
   def entries
     result = []
     buckets.each { |list| result.concat(list.to_array) unless list.nil? }
