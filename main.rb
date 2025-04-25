@@ -28,4 +28,5 @@ p test.get('lion')
 p test.get('cat')
 
 p test.has?('dog')
+p test.has?('carrot')
 p test.has?('cat')

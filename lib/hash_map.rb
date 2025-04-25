@@ -39,7 +39,8 @@ class HashMap
   end
 
   def has?(key)
-    buckets[find_bucket(key)].contains?(key)
+    bucket = buckets[find_bucket(key)]
+    bucket&.contains?(key) ? true : false
   end
 
   def entries
