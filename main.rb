@@ -45,5 +45,8 @@ p test.remove('frog')
 p test.remove('cat')
 
 p 'length'
-p test
 p test.length
+
+p 'clear'
+p test.clear
+p test

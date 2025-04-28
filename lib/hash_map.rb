@@ -59,6 +59,10 @@ class HashMap
     buckets.each { |list| result.concat(list.to_array) unless list.nil? }
     result
   end
+
+  def clear
+    buckets.clear
+  end
  
   private
 
