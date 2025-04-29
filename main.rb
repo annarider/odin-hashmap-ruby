@@ -36,6 +36,9 @@ p test.has?('cat')
 p 'keys'
 p test.keys
 
+p 'values'
+p test.values
+
 p 'length'
 p test
 p test.length

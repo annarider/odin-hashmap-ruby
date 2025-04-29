@@ -66,7 +66,13 @@ class HashMap
 
   def keys
     result = []
-    entries.each { |key, value| result << key unless key.nil? }
+    entries.each { |key, _| result << key unless key.nil? }
+    result
+  end
+
+  def values
+    result = []
+    entries.each { |_, value| result << value unless value.nil? }
     result
   end
  
