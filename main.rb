@@ -33,7 +33,9 @@ p test.has?('dog')
 p test.has?('carrot')
 p test.has?('cat')
 
-p 'remove'
+p 'keys'
+p test.keys
+
 p 'length'
 p test
 p test.length
@@ -41,12 +43,17 @@ p test.remove('elephant')
 p 'length'
 p test
 p test.length
+p 'remove'
 p test.remove('frog')
 p test.remove('cat')
 
 p 'length'
 p test.length
 
+p 'all'
+p test.entries
+
 p 'clear'
 p test.clear
+
 p test

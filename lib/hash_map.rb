@@ -63,6 +63,12 @@ class HashMap
   def clear
     buckets.clear
   end
+
+  def keys
+    result = []
+    entries.each { |key, value| result << key unless key.nil? }
+    result
+  end
  
   private
 
