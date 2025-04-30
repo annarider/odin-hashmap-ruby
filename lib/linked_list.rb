@@ -48,9 +48,11 @@ class LinkedList
   end
 
   def update_node(key, value)
-    current = @head
-    current = current.next_node until current.next_node.nil? || current.key == key
-    current.value = value
+    traverse do |current|
+      if current.key == key
+        return current.value = value
+      end
+    end
   end
 
   def remove(key)
