@@ -21,9 +21,30 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
+p 'all'
 p test.entries
-p test.length # 12
+p "length; #{test.length}" # 12
 
-p test.load_factor
+p 'before grow'
+p "load_factor: #{test.load_factor}"
+p "capacity: #{test.capacity}"
+p "length: #{test.length}"
 
-p test
+test.set('apple', 'green')
+
+p 'test update'
+p "load_factor: #{test.load_factor}"
+p "capacity: #{test.capacity}"
+p "length: #{test.length}"
+p test.entries
+
+p 'before grow'
+p "load_factor: #{test.load_factor}"
+p "capacity: #{test.capacity}"
+p "length: #{test.length}"
+test.set('moon', 'silver')
+p 'after grow'
+p "load_factor: #{test.load_factor}"
+p "capacity: #{test.capacity}"
+p "length: #{test.length}"
+p test.entries

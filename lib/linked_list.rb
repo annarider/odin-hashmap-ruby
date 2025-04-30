@@ -98,19 +98,12 @@ class LinkedList
     nil
   end
 
-  def insert_at(value, index)
-    return prepend(value) if index.zero?
-
-    return append(value) if index > size
-
-    current_index = 0
+  def update_node(key, value)
     current = @head
-    until current.next_node.nil? || current_index == index
-      current_index += 1
-      previous = current
+    until current.next_node.nil? || current.key == key
       current = current.next_node
     end
-    previous.next_node = Node.new(value, current)
+    current.value = value
   end
 
   def remove(key)

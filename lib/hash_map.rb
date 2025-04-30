@@ -28,8 +28,12 @@ class HashMap
   end
 
   def set(key, value)
-    grow if full_capacity?
-    set_in_bucket(key, value)
+    if has?(key) 
+      update(key, value)
+    else
+      grow if full_capacity?
+      set_in_bucket(key, value)
+    end
   end
   
   def get(key)
@@ -85,13 +89,12 @@ class HashMap
   end
   
   def full_capacity?
-    length > capacity * load_factor
+    length >= capacity * load_factor
   end
   
   def grow
-    @capacity *= 2 # double capacity
     original_data = entries
-    clear
+    @buckets = Array.new(@capacity *= 2) # double capacity
     original_data.each { |key, value| set_in_bucket(key, value) }
   end
   
@@ -99,5 +102,10 @@ class HashMap
     index = find_bucket(key)
     buckets[index] = LinkedList.new if buckets[index].nil?
     buckets[index].append(key, value)
+  end
+
+  def update(key, value)
+    bucket = buckets[find_bucket(key)]
+    bucket&.update_node(key, value) unless bucket.nil?
   end
 end
