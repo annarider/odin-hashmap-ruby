@@ -3,7 +3,7 @@
 # Node defines a node in the
 # LinkedList class, which is
 # ultimately used for Hashmaps.
-# It contains the data in the 
+# It contains the data in the
 # key-value pair and points to
 # the next node.
 #
