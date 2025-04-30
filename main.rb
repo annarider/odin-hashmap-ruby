@@ -22,41 +22,8 @@ test.set('kite', 'pink')
 test.set('lion', 'golden')
 
 p test.entries
+p test.length # 12
 
-p 'get'
-p test.get('elephant')
-p test.get('lion')
-p test.get('cat')
-
-p 'has?'
-p test.has?('dog')
-p test.has?('carrot')
-p test.has?('cat')
-
-p 'keys'
-p test.keys
-
-p 'values'
-p test.values
-
-p 'length'
-p test
-p test.length
-p test.remove('elephant')
-p 'length'
-p test
-p test.length
-p 'remove'
-p test.remove('frog')
-p test.remove('cat')
-
-p 'length'
-p test.length
-
-p 'all'
-p test.entries
-
-p 'clear'
-p test.clear
+p test.load_factor
 
 p test
