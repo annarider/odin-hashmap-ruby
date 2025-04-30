@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'lib/hash_map'
+require_relative 'test_set'
 
 # main contains the main execution
 # for running my HashMaps project.

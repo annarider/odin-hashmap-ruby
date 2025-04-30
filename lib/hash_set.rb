@@ -19,6 +19,7 @@ class HashSet
   end
 
   def hash(key)
+    puts "DEBUG: Key type is #{key.class}, value: #{key.inspect}"
     hash_code = 0
     prime_number = 31
 
@@ -28,7 +29,7 @@ class HashSet
   end
 
   def add(key)
-    if has?(key)
+    if contains?(key)
       update(key)
     else
       grow if full_capacity?
@@ -54,8 +55,8 @@ class HashSet
 
   def items
     result = []
-    buckets.each { |list| result.concat(list.to_array) unless list.nil? }
-    result
+    buckets.each { |list| result.concat(list.to_array[0]) unless list.nil? }
+    result.compact
   end
 
   def clear
