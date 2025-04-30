@@ -58,3 +58,43 @@ p "length: #{test.length}"
 p test.remove('dog')
 p test.remove('lion')
 p "length: #{test.length}"
+
+p 'get'
+p test.get('elephant')
+p test.get('lion')
+p test.get('cat')
+
+p 'has?'
+p test.has?('dog')
+p test.has?('carrot')
+p test.has?('cat')
+
+p 'remove'
+p 'length'
+p test
+p test.length
+p test.remove('elephant')
+p 'length'
+p test
+p test.length
+p test.remove('frog')
+p test.remove('cat')
+
+p 'length'
+p test.length
+
+p 'clear'
+p test.clear
+
+p test.set('hair', 'blond')
+p test.set('flower', 'yellow')
+p test.set('leaf', 'green')
+p test.set('clip', 'gold')
+p "capacity: #{test.capacity}"
+p "length: #{test.length}"
+p test.set('flower', 'orange')
+p test.set('clip', 'silver')
+
+p "capacity: #{test.capacity}"
+p "length: #{test.length}"
+p test.entries

@@ -64,7 +64,7 @@ class HashMap
   end
 
   def clear
-    buckets.clear
+    @buckets = Array.new(capacity)
   end
 
   def keys
