@@ -48,3 +48,12 @@ p "load_factor: #{test.load_factor}"
 p "capacity: #{test.capacity}"
 p "length: #{test.length}"
 p test.entries
+
+p test.remove('apple')
+p "length: #{test.length}"
+p test.remove('hat')
+p "length: #{test.length}"
+p test.remove('truck')
+p "length: #{test.length}"
+p test.remove('dog')
+p test.remove('lion')

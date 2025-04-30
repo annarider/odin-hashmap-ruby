@@ -27,15 +27,6 @@ class LinkedList
     end
   end
 
-  def prepend(key, value)
-    if @head.nil?
-      @head = Node.new(key, value)
-    else
-      old_head = @head
-      @head = Node.new(key, value, old_head)
-    end
-  end
-
   def size
     size = 0
     return size if @head.nil?
@@ -48,51 +39,15 @@ class LinkedList
     size + 1
   end
 
-  def head
-    @head.value
-  end
-
-  def tail
-    return nil if @head.nil?
-
-    current = @head
-    current = current.next_node until current.next_node.nil?
-    current.value
-  end
-
-  def at(index)
-    current_index = 0
-    return nil if @head.nil?
-
-    current = @head
-    until index == current_index
-      current = current.next_node
-      current_index += 1
-    end
-    current.value
-  end
-
-  def pop
-    return nil if @head.nil?
-
-    current = @head
-    previous = current
-    until current.next_node.nil?
-      previous = current
-      current = current.next_node
-    end
-    previous.next_node = nil
-  end
-
   def contains?(key)
-    traverse do |current, _|
+    traverse do |current|
       return true if current.key == key
     end
     nil
   end
 
   def find(key)
-    traverse do |current, index|
+    traverse do |current|
       return current if current.key == key
     end
     nil
@@ -100,25 +55,16 @@ class LinkedList
 
   def update_node(key, value)
     current = @head
-    until current.next_node.nil? || current.key == key
-      current = current.next_node
-    end
+    current = current.next_node until current.next_node.nil? || current.key == key
     current.value = value
   end
 
   def remove(key)
-    current = @head
-    @head = nil
-    if current.next_node.nil?
-      current.value
-    else
-      until current.next_node.nil? || current.key == key
-        previous = current
-        current = current.next_node
-      end
-      previous.next_node = current.next_node
-      current.value
-    end
+    return nil if head.nil?
+
+    return remove_head if head.key == key
+
+    find_and_remove(key)
   end
 
   def to_array
@@ -137,11 +83,26 @@ class LinkedList
     return nil if @head.nil?
 
     current = @head
-    index = 0
     until current.nil?
-      yield(current, index) if block_given?
+      yield(current) if block_given?
       current = current.next_node
-      index += 1
     end
+  end
+
+  def remove_head
+    value = head.value
+    @head = head.next_node
+    value
+  end
+
+  def find_and_remove(key)
+    current = @head
+    current = current.next_node until current.next_node.nil? || current.next_node.key == key
+
+    return nil unless current.next_node
+
+    value = current.next_node.value
+    current.next_node = current.next_node.next_node
+    value
   end
 end

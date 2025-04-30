@@ -21,83 +21,84 @@ class HashMap
   def hash(key)
     hash_code = 0
     prime_number = 31
-       
+
     key.each_char { |char| hash_code = prime_number * hash_code + char.ord }
-       
+
     hash_code
   end
 
   def set(key, value)
-    if has?(key) 
+    if has?(key)
       update(key, value)
     else
       grow if full_capacity?
       set_in_bucket(key, value)
     end
   end
-  
+
   def get(key)
     bucket = buckets[find_bucket(key)]
-    bucket&.find(key).value unless bucket.nil? 
+    bucket&.find(key)&.value unless bucket.nil?
   end
-  
+
   def has?(key)
     bucket = buckets[find_bucket(key)]
     bucket&.contains?(key) ? true : false
   end
-  
+
   def remove(key)
     bucket = buckets[find_bucket(key)]
     bucket&.remove(key) unless bucket.nil?
   end
-  
+
   def length
     count = 0
     buckets.each { |list| count += list.size unless list.nil? }
     count
   end
-  
+
   def entries
     result = []
     buckets.each { |list| result.concat(list.to_array) unless list.nil? }
     result
   end
-  
+
   def clear
     buckets.clear
   end
-  
+
   def keys
     result = []
     entries.each { |key, _| result << key unless key.nil? }
     result
   end
-  
+
   def values
     result = []
     entries.each { |_, value| result << value unless value.nil? }
     result
   end
-  
+
   private
-  
+
   def find_bucket(key)
     hash_code = hash(key)
     index = hash_code % capacity
     raise IndexError if index.negative? || index >= buckets.length
+
     index
   end
-  
+
   def full_capacity?
     length >= capacity * load_factor
   end
-  
+
   def grow
     original_data = entries
     @buckets = Array.new(@capacity *= 2) # double capacity
     original_data.each { |key, value| set_in_bucket(key, value) }
   end
-  
+
   def set_in_bucket(key, value)
     index = find_bucket(key)
     buckets[index] = LinkedList.new if buckets[index].nil?
