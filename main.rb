@@ -57,3 +57,4 @@ p test.remove('truck')
 p "length: #{test.length}"
 p test.remove('dog')
 p test.remove('lion')
+p "length: #{test.length}"

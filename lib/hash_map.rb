@@ -38,7 +38,7 @@ class HashMap
 
   def get(key)
     bucket = buckets[find_bucket(key)]
-    bucket&.find(key)&.value unless bucket.nil?
+    bucket&.find(key)&.value
   end
 
   def has?(key)
@@ -48,7 +48,7 @@ class HashMap
 
   def remove(key)
     bucket = buckets[find_bucket(key)]
-    bucket&.remove(key) unless bucket.nil?
+    bucket&.remove(key)
   end
 
   def length
@@ -69,13 +69,13 @@ class HashMap
 
   def keys
     result = []
-    entries.each { |key, _| result << key unless key.nil? }
+    entries.each_key { |item| result << item unless item.nil? }
     result
   end
 
   def values
     result = []
-    entries.each { |_, value| result << value unless value.nil? }
+    entries.each_value { |item| result << item unless item.nil? }
     result
   end
 
@@ -107,6 +107,6 @@ class HashMap
 
   def update(key, value)
     bucket = buckets[find_bucket(key)]
-    bucket&.update_node(key, value) unless bucket.nil?
+    bucket&.update_node(key, value)
   end
 end
