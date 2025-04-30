@@ -28,15 +28,9 @@ class LinkedList
   end
 
   def size
-    size = 0
-    return size if @head.nil?
-
-    current = @head
-    until current.next_node.nil?
-      size += 1
-      current = current.next_node
-    end
-    size + 1
+    count = 0
+    traverse { count += 1 }
+    count
   end
 
   def contains?(key)
